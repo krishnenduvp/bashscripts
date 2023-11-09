@@ -9,8 +9,8 @@ for user in $usernames; do
     aging_info=$(chage -l $user 2>/dev/null)
 
     # Check if the account is expired
-    if [[ $aging_info == *"Account expires"* ]]; then
-        echo "User $user is expired:"
+    if [[ $aging_info == *"Account expires"* && $aging_info != *"never"* ]]; then
+    echo "User $user is expired:"
         echo "$aging_info"
         echo "------------------------"
     fi
