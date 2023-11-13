@@ -1,4 +1,5 @@
 #!/bin/bash
+awk -F: '{ system("chage -l "$1" | grep 'Password expires'") }' /etc/shadow | grep -v 'never' | grep -v 'Password expires'
 
 # Get a list of usernames from /etc/passwd
 usernames=$(awk -F: '/^[^#]/ {print $1}' /etc/passwd)
